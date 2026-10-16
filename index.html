@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brain Plugins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a reading column for the story, widening to a two-up grid wherever Karpathy and Pocock sit side by side. Each person keeps their agent color (blue / orange). */
+:root {
+  --bg: #eef1f4;
+  --surface: #f8fafb;
+  --ink: #17202b;
+  --muted: #566272;
+  --rule: #cdd4dc;
+  --code-bg: #e3e8ee;
+  --k: #2f5bd3;
+  --p: #b8561a;
+  --ok: #1f7a4d;
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Literata", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12161c; --surface: #191e26; --ink: #e6eaf0; --muted: #98a3b1; --rule: #2c3440;
+    --code-bg: #212833; --k: #85a2ff; --p: #f09a5a; --ok: #5ccf94; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12161c; --surface: #191e26; --ink: #e6eaf0; --muted: #98a3b1; --rule: #2c3440;
+  --code-bg: #212833; --k: #85a2ff; --p: #f09a5a; --ok: #5ccf94; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  padding-inline: 20px; padding-block: 40px 64px;
+}
+.wrap { max-width: 1040px; margin-inline: auto; display: grid; gap: 64px; }
+.col { max-width: 680px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.1rem, 5vw, 3.3rem); font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: 1.6rem; font-weight: 600; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p { margin: 0; }
+section { display: grid; gap: 20px; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.2rem; color: var(--ink); }
+.note { font-size: 0.95rem; color: var(--muted); }
+a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+a:hover { text-decoration-color: currentColor; }
+code, .mono { font-family: var(--font-mono); font-size: 0.86em; }
+:not(pre) > code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--k); outline-offset: 2px; }
+
+header { display: grid; gap: 18px; }
+.who { display: flex; flex-wrap: wrap; gap: 8px 18px; font-family: var(--font-mono); font-size: 0.85rem; }
+.who span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; vertical-align: 1px; }
+.who .k::before { background: var(--k); }
+.who .p::before { background: var(--p); }
+
+.cite {
+  font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.55;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 8px;
+  padding: 14px 16px; overflow-x: auto; white-space: pre; color: var(--muted);
+}
+.cite b { color: var(--ink); font-weight: 600; }
+.cite .src { color: var(--k); }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 22px; display: grid; gap: 14px; align-content: start; min-width: 0; border-top: 4px solid var(--c); }
+.card.k { --c: var(--k); }
+.card.p { --c: var(--p); }
+.card h3 { color: var(--c); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stat { display: grid; }
+.stat b { font-family: var(--font-display); font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 0.8rem; color: var(--muted); font-family: var(--font-mono); }
+dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; font-size: 0.95rem; }
+dt { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); padding-top: 2px; }
+dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+
+ol.rules { margin: 0; padding-left: 1.4em; display: grid; gap: 10px; font-size: 0.97rem; }
+ol.rules li::marker { font-family: var(--font-mono); color: var(--c); font-weight: 600; }
+ol.rules b { font-family: var(--font-display); font-weight: 600; }
+
+ol.flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: s; }
+ol.flow li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding-block: 14px; border-top: 1px solid var(--rule); }
+ol.flow li:last-child { border-bottom: 1px solid var(--rule); }
+ol.flow li::before { content: counter(s, decimal-leading-zero); font-family: var(--font-mono); color: var(--muted); padding-top: 2px; }
+ol.flow .hook { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ok); border: 1px solid currentColor; border-radius: 99px; padding: 0 8px; margin-left: 6px; white-space: nowrap; }
+
+.tbl { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.cmds { display: grid; gap: 10px; }
+.cmd { display: flex; align-items: stretch; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); min-width: 0; }
+.cmd code { flex: 1; min-width: 0; padding: 11px 14px; overflow-x: auto; white-space: nowrap; background: none; font-size: 0.85rem; }
+.cmd button { font-family: var(--font-mono); font-size: 0.78rem; border: 0; border-left: 1px solid var(--rule); background: none; color: var(--muted); padding-inline: 14px; cursor: pointer; border-radius: 0 8px 8px 0; }
+.cmd button:hover { color: var(--ink); background: var(--code-bg); }
+
+.found { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.found div { border-left: 3px solid var(--k); padding: 4px 0 4px 14px; display: grid; gap: 4px; }
+.found b { font-family: var(--font-display); font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.found span { font-size: 0.92rem; color: var(--muted); }
+
+ul.plain { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: 0.9rem; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) {
+  .cmd button { transition: background 0.15s, color 0.15s; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="col">
+  <div class="eyebrow">Claude Code plugins · unofficial</div>
+  <h1>Brain Plugins</h1>
+  <p class="lede">Two Claude Code plugins that make an agent work the way Andrej Karpathy or Matt Pocock builds and teaches. Each one ships the person's 7 rules, a skill that grades the agent against them, and a wiki of their public work where every claim stands on a verbatim, linked quote.</p>
+  <div class="who"><span class="k">karpathy-brain</span><span class="p">pocock-brain</span></div>
+  <p class="note">Neither Andrej Karpathy nor Matt Pocock made, reviewed or endorsed these plugins. They are built only from what each of them published.</p>
+</header>
+
+<section class="col">
+  <div class="eyebrow">The unit of evidence</div>
+  <h2>Every claim carries its quote</h2>
+  <p>The wikis follow Karpathy's own LLM-wiki pattern: raw sources that never change, plus wiki pages that an LLM writes and maintains. One rule holds the pages together: no claim without a quote directly under it. Each quote line names the raw file it came from, links to the public original and carries the month it was said.</p>
+  <div class="cite"><b>Teaching is building ramps.</b> He builds live, from an empty file, one step at a time.
+  &gt; "In my mind, education is the very difficult technical process of building
+  ramps to knowledge." — [<span class="src">youtube-appearances/…summoning-ghosts.md</span>](youtube.com/watch?v=lXUZvyajciY&amp;t=7401s) · 2025-10</div>
+  <p class="note">A checker script confirms every quote word for word against the raw files. A separate claim check then asks whether the quote supports the claim, whether this person said it, and whether the date is right.</p>
+</section>
+
+<section>
+  <div class="col" style="display:grid;gap:12px">
+    <div class="eyebrow">What you install</div>
+    <h2>Two plugins, same shape</h2>
+  </div>
+  <div class="two">
+    <article class="card k">
+      <h3>karpathy-brain</h3>
+      <div class="stats">
+        <div class="stat"><b>47</b><span>wiki pages</span></div>
+        <div class="stat"><b>1,430</b><span>quotes</span></div>
+        <div class="stat"><b>5</b><span>source types</span></div>
+      </div>
+      <dl>
+        <dt>Skill</dt><dd><code>/karpathy-brain:teach</code></dd>
+        <dt>Agent</dt><dd><code>karpathy-brain:karpathy</code></dd>
+        <dt>Sources</dt><dd>9,426 X posts (2009–2026), 15 YouTube transcripts, 45 blog posts, 54 repos and 13 gists, 22 talks and interviews on other channels</dd>
+      </dl>
+    </article>
+    <article class="card p">
+      <h3>pocock-brain</h3>
+      <div class="stats">
+        <div class="stat"><b>41</b><span>wiki pages</span></div>
+        <div class="stat"><b>837</b><span>quotes</span></div>
+        <div class="stat"><b>5</b><span>source types</span></div>
+      </div>
+      <dl>
+        <dt>Skill</dt><dd><code>/pocock-brain:teach</code></dd>
+        <dt>Agent</dt><dd><code>pocock-brain:pocock</code></dd>
+        <dt>Sources</dt><dd>35,859 X posts (2016–2026), 298 YouTube transcripts, 265 aihero.dev pages, 168 repos and 84 gists, 51 talks and streams on other channels</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="col" style="display:grid;gap:12px">
+    <div class="eyebrow">wiki/rules.md</div>
+    <h2>The 7 rules</h2>
+    <p>Each rule appears in at least two different kinds of source, such as a post and a talk, and in the person's own words. The agent follows them, and the teach skill grades against them.</p>
+  </div>
+  <div class="two">
+    <article class="card k">
+      <h3>Karpathy</h3>
+      <ol class="rules">
+        <li><b>Rebuild it to understand it.</b> Read or write the smallest version of anything you rely on. Never explain code you haven't read.</li>
+        <li><b>Look at the data and predict the number.</b> Write down the expected output, then run it and compare.</li>
+        <li><b>Build up from something you trust.</b> Start from the simplest working version and check after every change.</li>
+        <li><b>Make complexity earn its place.</b> Fewer files, dependencies and abstractions. Say what you left out.</li>
+        <li><b>Small diffs, and you own them.</b> One concrete change at a time, and never "it works" without a run.</li>
+        <li><b>Build it live, as the smallest complete version.</b> Teach with a minimal, runnable example, built step by step.</li>
+        <li><b>Build the ramp, then let the learner climb.</b> Each step needs only the earlier ones; learners get an exercise first.</li>
+      </ol>
+    </article>
+    <article class="card p">
+      <h3>Pocock</h3>
+      <ol class="rules">
+        <li><b>Align before any code.</b> State the goal, assumptions and scope; ask about decisions that change the result.</li>
+        <li><b>Build the feedback loop first.</b> Decide how you'll know it works, run it, go red to green in thin slices.</li>
+        <li><b>Give the agent less.</b> Read only what the task needs and make the smallest change that works.</li>
+        <li><b>Design the interface, delegate the implementation.</b> Signatures, inputs, outputs and layout come first.</li>
+        <li><b>Problem first, solution after.</b> Show the failing case before the fix; learners try an exercise first.</li>
+        <li><b>One thing at a time, in dependency order.</b> One idea per step, pitched at the user's level.</li>
+        <li><b>Use what has always worked.</b> Proven techniques and boring tools. No hype, and say when you're unsure.</li>
+      </ol>
+    </article>
+  </div>
+</section>
+
+<section class="col">
+  <div class="eyebrow">/karpathy-brain:teach &lt;task&gt;</div>
+  <h2>What happens on a teach run</h2>
+  <ol class="flow">
+    <li><div>The skill hands your task to the persona agent unchanged, plus any file paths or decisions from your conversation.</div></li>
+    <li><div>The agent must read <code>wiki/hot.md</code> before it can use any other tool. <span class="hook">wiki_budget</span></div></li>
+    <li><div>It may open at most 5 wiki pages in total, chosen from links in hot.md. It can't grep the wiki to get around the limit. <span class="hook">wiki_budget</span></div></li>
+    <li><div>It does the task by the 7 rules and ends with three lines: <b>Ran</b>, <b>Came out</b>, <b>Changed</b>.</div></li>
+    <li><div>It can't finish until that block is there and every mention of the person cites a wiki page that exists. <span class="hook">footer_check</span></div></li>
+    <li><div>The skill grades each rule PASS, PARTIAL, FAIL or N/A, with a short quote from the answer as evidence. It checks the footer and the citations with tools, and re-runs the cheapest test.</div></li>
+    <li><div>Any FAIL gets one revision round with the exact fix, never more. Then you see the unedited answer and the grade table.</div></li>
+    <li><div>If the turn wrote code and nothing ran afterwards, the session can't end until something runs. The message is "Karpathy rule, run it before you say it works." <span class="hook">run_check</span></div></li>
+  </ol>
+</section>
+
+<section class="col">
+  <div class="eyebrow">hooks/hooks.json</div>
+  <h2>The three guards</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Script</th><th>Event</th><th>What it blocks</th></tr></thead>
+      <tbody>
+        <tr><td><code>wiki_budget.py</code></td><td>PreToolUse</td><td>Any tool before hot.md is read, a 6th wiki page, and grep or Bash over the wiki. It acts only inside the persona's own subagent.</td></tr>
+        <tr><td><code>footer_check.py</code></td><td>SubagentStop</td><td>Finishing without Ran / Came out / Changed, naming the person without a citation, or citing a page that doesn't exist.</td></tr>
+        <tr><td><code>run_check.py</code></td><td>Stop</td><td>Ending a persona turn where code was written but nothing was run afterwards. It fires once, so it can't loop.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">The scripts use only the Python standard library, so you need <code>python3</code> on your PATH.</p>
+</section>
+
+<section class="col">
+  <div class="eyebrow">How the wikis were made</div>
+  <h2>From raw archive to rules</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Phase</th><th>What happens</th><th>Karpathy</th></tr></thead>
+      <tbody>
+        <tr><td>Collect</td><td>Everything public: X, own YouTube, blog, GitHub, talks on other channels. Raw and unsummarized.</td><td class="num">≈ $2.38</td></tr>
+        <tr><td>Freeze</td><td>Checksum every raw file; from here on, nothing writes to raw.</td><td class="num">11,497 files</td></tr>
+        <tr><td>Extract</td><td>One agent per source pulls candidate quotes; a script checks each against raw.</td><td class="num">1,765 quotes</td></tr>
+        <tr><td>Write</td><td>Principle, method and source pages; every claim has its quote under it.</td><td class="num">47 pages</td></tr>
+        <tr><td>Claim check</td><td>Fresh agents test support, speaker and date; the writers fix what they find.</td><td class="num">0 errors left</td></tr>
+        <tr><td>Rules + persona</td><td>The 7 strongest rules, then agent, skill and hooks.</td><td class="num">7 rules</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The claim check is the step that matters most. Checking a quote word for word only proves that it exists. It doesn't prove that the quote supports the claim, or that the person said it. On the Karpathy wiki the check found:</p>
+  <div class="found">
+    <div><b>64</b><span>claims that said more than their quote did, now reworded</span></div>
+    <div><b>1</b><span>Feynman line that Karpathy quotes and credits, which had been attributed to him</span></div>
+    <div><b>25</b><span>quotes from an LLM-cleaned transcript, replaced with what he actually said in the recording</span></div>
+  </div>
+  <p class="note">Each plugin's <code>wiki/log.md</code> records every build step and check result.</p>
+</section>
+
+<section class="col">
+  <div class="eyebrow">Install</div>
+  <h2>Add the marketplace, then pick a brain</h2>
+  <div class="cmds">
+    <div class="cmd"><code id="c1">/plugin marketplace add jankutschera/brain-plugins</code><button type="button" data-copy="c1">Copy</button></div>
+    <div class="cmd"><code id="c2">/plugin install karpathy-brain@brain-plugins</code><button type="button" data-copy="c2">Copy</button></div>
+    <div class="cmd"><code id="c3">/plugin install pocock-brain@brain-plugins</code><button type="button" data-copy="c3">Copy</button></div>
+  </div>
+  <p>Then hand it a task:</p>
+  <div class="cmds">
+    <div class="cmd"><code id="c4">/karpathy-brain:teach Write a numerically stable softmax in numpy and show why it is stable</code><button type="button" data-copy="c4">Copy</button></div>
+    <div class="cmd"><code id="c5">/pocock-brain:teach Add a typed retry helper with a test that proves it retries</code><button type="button" data-copy="c5">Copy</button></div>
+  </div>
+  <p class="note">Source: <a href="https://github.com/jankutschera/brain-plugins">github.com/jankutschera/brain-plugins</a></p>
+</section>
+
+<section class="col">
+  <div class="eyebrow">Limits</div>
+  <h2>What these plugins are not</h2>
+  <ul class="plain">
+    <li>They're not the person. The agent follows rules taken from their public work and cites where each rule comes from. Where the wiki is silent, it says nothing about them.</li>
+    <li>They're snapshots. Both wikis were frozen in October 2026, so anything published later isn't in them.</li>
+    <li>The grade is a second opinion from the same model, and it can be strict. In one test it gave 4 of 7 because an exercise answer was wrong, and it was right.</li>
+    <li>Quotes remain the work of the people quoted. Each one is short, attributed and linked to its public source.</li>
+  </ul>
+</section>
+
+<footer class="col">
+  Built with a <code>/brain</code> pipeline that turns one person's public work into a quote-verified wiki, rules and persona. The code, prompts and wiki prose are under the MIT license.
+</footer>
+
+</div>
+
+<script>
+document.querySelectorAll("[data-copy]").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var el = document.getElementById(btn.getAttribute("data-copy"));
+    var text = el.textContent;
+    var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1500); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = "Selected";
+      setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+  });
+});
+</script>
+</body>
+</html>

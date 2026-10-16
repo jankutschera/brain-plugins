@@ -1,0 +1,20 @@
+{
+  "name": "brain-plugins",
+  "description": "Personas built from a quote-verified wiki of one person's public work: a subagent, a grading /teach skill and the wiki itself.",
+  "owner": {
+    "name": "Jan Kutschera",
+    "url": "https://github.com/jankutschera"
+  },
+  "plugins": [
+    {
+      "name": "karpathy-brain",
+      "source": "./plugins/karpathy-brain",
+      "description": "Do any task the way Andrej Karpathy builds and teaches (unofficial)."
+    },
+    {
+      "name": "pocock-brain",
+      "source": "./plugins/pocock-brain",
+      "description": "Do any task the way Matt Pocock builds and teaches (unofficial)."
+    }
+  ]
+}

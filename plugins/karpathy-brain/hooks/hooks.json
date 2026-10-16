@@ -1,0 +1,35 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/wiki_budget.py\" \"${CLAUDE_PLUGIN_ROOT}/wiki\" karpathy"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/footer_check.py\" \"${CLAUDE_PLUGIN_ROOT}/wiki\" karpathy '\\b(Karpathy|Andrej)\\b'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/run_check.py\" Karpathy karpathy-brain:karpathy karpathy-brain:teach"
+          }
+        ]
+      }
+    ]
+  }
+}

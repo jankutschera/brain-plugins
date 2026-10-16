@@ -1,0 +1,20 @@
+{
+  "name": "karpathy-brain",
+  "displayName": "Andrej Karpathy brain",
+  "version": "1.0.0",
+  "description": "Do any task the way Andrej Karpathy builds and teaches: a subagent bound to 7 rules, a /teach skill that grades its answer, and a quote-verified wiki of his public work (1,430 quotes, each linked to its source). Unofficial.",
+  "author": {
+    "name": "Jan Kutschera",
+    "url": "https://github.com/jankutschera"
+  },
+  "homepage": "https://github.com/jankutschera/brain-plugins",
+  "repository": "https://github.com/jankutschera/brain-plugins",
+  "license": "MIT",
+  "keywords": [
+    "persona",
+    "teaching",
+    "llm-wiki",
+    "karpathy",
+    "coding"
+  ]
+}
