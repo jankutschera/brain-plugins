@@ -6,6 +6,7 @@ Quote-verified wiki of how he builds and teaches. Start with [hot.md](hot.md), t
 
 - [Ambition and agency](principles/ambition-and-agency.md): Pick ambitious problems, because a 10x more important problem is not 10x harder, and count agency and sheer volume of work above raw intelligence.
 - [Build for agents](principles/build-for-agents.md): The main reader of docs, tools and products is now an LLM, so build for the agent.
+- [The capability gap](principles/capability-gap.md): How much LLM capability someone sees depends on access tier, domain and problem size, so people with different exposure talk past each other.
 - [Build to understand](principles/build-to-understand.md): You understand something only once you have built it yourself, from scratch.
 - [The core is tiny](principles/core-is-tiny.md): The core of an algorithm fits on a page; everything else in a real code base is there to make it fast.
 - [The data is the program](principles/data-is-the-program.md): In Software 2.0 the dataset is the program, so the data and the loop that improves it matter more than the architecture.

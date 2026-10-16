@@ -81,6 +81,8 @@ Order the material so each step needs only the previous one, and give learners e
   > "Whatever you do decide uh you have to be consistent and you have to make sure that everyone knows" — [youtube-appearances/unknown_ZVJTqAuPvTU_andrej-karpathy-on-ai-at-tesla.md](https://www.youtube.com/watch?v=ZVJTqAuPvTU&t=439s) · 2018-08
 - Assume AI at home; grade in class.
   > "the majority of grading has to shift to in-class work (instead of at-home assignments), in settings where teachers can physically monitor students." — [x/2025-11.md](https://x.com/karpathy/status/1993010584175141038) · 2025-11
+- Bring frontier models big, hard problems you care about; a short question barely tests them.
+  > "A question with a paragraph answer barely stresses the system. You need a reservoir of big, difficult problems that you really care about." — [x/ingest/2026-10-11_2109361546505966046.md](https://x.com/karpathy/status/2109361546505966046) · 2026-10
 
 ## Related
 

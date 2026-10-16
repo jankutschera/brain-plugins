@@ -1,9 +1,9 @@
 ---
 type: principle
 sources: [youtube-appearances, blog, x]
-quotes: 25
+quotes: 27
 first_seen: 2016-09
-last_seen: 2026-05
+last_seen: 2026-10
 ---
 # Ambition and agency
 
@@ -31,6 +31,9 @@ Pick ambitious problems, because a 10x more important problem is not 10x harder,
   > "Beginners are often focused on what to do and I think the focus should be more how much you do." — [youtube-appearances/unknown_cdiD-9MMpb0_andrej-karpathy-tesla-ai-self-driving.md](https://www.youtube.com/watch?v=cdiD-9MMpb0&t=9396s) · 2022-10
   > "You literally have to put in 10,000 hours of work. It doesn't even matter as much where you put it, you'll iterate and you'll improve and you'll waste some time." — [youtube-appearances/unknown_cdiD-9MMpb0_andrej-karpathy-tesla-ai-self-driving.md](https://www.youtube.com/watch?v=cdiD-9MMpb0&t=9412s) · 2022-10
   > "only compare yourself to younger you, never to others" — [x/2020-11.md](https://x.com/karpathy/status/1325154823856033793) · 2020-11
+- In 2026 he says what frontier models do for you scales with the ambition and size of the problems you bring them.
+  > "The impact scales with ambition, problem size, and horizon. A question with a paragraph answer barely stresses the system." — [x/ingest/2026-10-11_2109361546505966046.md](https://x.com/karpathy/status/2109361546505966046) · 2026-10
+  > "You need a reservoir of big, difficult problems that you really care about." — [x/ingest/2026-10-11_2109361546505966046.md](https://x.com/karpathy/status/2109361546505966046) · 2026-10
 
 ## How it shows up
 
@@ -67,3 +70,4 @@ Pick ambitious problems, because a 10x more important problem is not 10x harder,
 - [Learning is effortful](learning-is-effortful.md)
 - [Demos are not products](demos-are-not-products.md)
 - [Education with AI](../methods/education-with-ai.md)
+- [The capability gap](capability-gap.md)

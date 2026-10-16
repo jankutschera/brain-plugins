@@ -14,6 +14,7 @@ date_range: 2009-06 – 2026-10
 - **Gap:** posts from 2010 are absent; the collection jumps from 2009-10 to 2011-06.
 - **How it was read:** every post was parsed into (file, month, type, likes, views, own text), then sampled four ways: (1) every non-retweet post over 100 words, 291 posts and about 79k words, all from 2023-04 to 2026-10, read in full; (2) the 25-35 most-liked posts of every year 2009-2022 and the 45-70 most-liked short posts of 2023-2026; (3) theme greps with an engagement floor (teaching, debugging, data, learning, from scratch, Software 2.0, biography); (4) targeted raw reads for the Eureka Labs announcement (2024-07) and the micrograd/microgpt posts (2026-02).
 - **Era spread:** UBC and early Stanford (2009-2013), Stanford PhD and CS231n (2014-2016), OpenAI founding (2016-2017), Tesla (2017-2022), sabbatical and Zero to Hero (2022), OpenAI again (2023-2024), Eureka Labs, llm.c and nanochat (2024-2026), Anthropic (2026-05 onward).
+- **Ingested after the build:** single posts live in `raw/x/ingest/`. 2026-10-16: post 2109361546505966046 (2026-10-11), a quote post of 2042334451611693415; only its own text was quoted.
 - **Thin or skipped:** 2009-2013 is mostly link sharing and personal chatter. Thousands of low-engagement replies were not read one by one. Link lists, model-release news and personal life posts were sampled only where they show a method. Quotes containing an ellipsis, HTML entities or inner quotation marks were shortened or dropped.
 
 ## What this source shows about them
@@ -98,6 +99,9 @@ date_range: 2009-06 – 2026-10
   > "Seeing the agent do this entire workflow end-to-end and all by itself as it worked through approx. 700 changes autonomously is wild." — [x/2026-03.md](https://x.com/karpathy/status/2031135152349524125) · 2026-03
 - The 2026-04 post on LLM-compiled wikis, the idea behind this wiki.
   > "a large fraction of my recent token throughput is going less into manipulating code, and more into manipulating knowledge (stored as markdown and images)." — [x/2026-04.md](https://x.com/karpathy/status/2039805659525644595) · 2026-04
+- The 2026-10 post on the widening gap in how people see LLM capability, a funnel driven by problem size, domain and access (ingested 2026-10-16).
+  > "this gap in shared understanding of LLM capability is *widening*." — [x/ingest/2026-10-11_2109361546505966046.md](https://x.com/karpathy/status/2109361546505966046) · 2026-10
+  > "The impact scales with ambition, problem size, and horizon." — [x/ingest/2026-10-11_2109361546505966046.md](https://x.com/karpathy/status/2109361546505966046) · 2026-10
 
 ## Related
 

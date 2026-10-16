@@ -16,3 +16,10 @@
 ## [2026-10-15] query | rules
 - `rules.md`: 7 active rules, each with quotes from 3–5 source folders, plus 4 bench rules with one source each.
 - `check_wiki.py`: 47 pages, 1,430 quotes, 0 errors.
+
+## [2026-10-16] ingest | X post 2109361546505966046: the widening LLM capability gap
+- Label: `x/ingest/2026-10-11_2109361546505966046.md` (2026-10-11 quote post of the April 2026 gap post). 18 verified candidates in `build/candidates/ingest_x-2109361546505966046.md`.
+- New page: `principles/capability-gap.md` (x + youtube).
+- Evidence added: `verifiability-drives-progress` (revenue as a driver of jaggedness), `ambition-and-agency` (impact scales with problem size). Dated evolution lines: `ai-assisted-coding`, `understanding-cannot-be-outsourced`. `sources/x.md`: notable piece and ingest note.
+- Rules: no bench rule promoted, no active rule changed. One new bench rule: bring frontier models big, hard problems.
+- Claim check (separate agent): 19 claims, 3 support problems on `principles/capability-gap.md`, all fixed (statement reworded around the funnel, lab-review line corrected to the narrow end, October quote swapped). Report: `build/ingest/x-2109361546505966046_claimcheck.md`.

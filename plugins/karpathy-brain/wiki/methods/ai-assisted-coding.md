@@ -1,9 +1,9 @@
 ---
 type: method
 sources: [x, youtube-appearances, blog, github]
-quotes: 35
+quotes: 36
 first_seen: 2022-10
-last_seen: 2026-04
+last_seen: 2026-10
 ---
 # AI-assisted coding
 
@@ -74,6 +74,8 @@ He codes with AI in a tight loop: give context, ask for options, take small diff
   > "I don't think I've typed like a line of code probably since December basically." — [youtube-appearances/unknown_kwSVtQ7dziU_skill-issue-andrej-karpathy-on-code.md](https://www.youtube.com/watch?v=kwSVtQ7dziU&t=114s) · 2026-03
 - The same month he wrote that he felt behind as a programmer.
   > "I've never felt this much behind as a programmer." — [x/2025-12.md](https://x.com/karpathy/status/2004607146781278521) · 2025-12
+- October 2026: looking back, he describes his coding of less than a year earlier as typing by hand with occasional Tab autocomplete.
+  > "less than 1 year ago, I was writing code manually by hand, typing memorized computer code commands into a code editor character by character, occasionally pressing Tab to autocomplete a little chunk of code." — [x/ingest/2026-10-11_2109361546505966046.md](https://x.com/karpathy/status/2109361546505966046) · 2026-10
 
 ## Related
 
@@ -84,3 +86,4 @@ He codes with AI in a tight loop: give context, ask for options, take small diff
 - [Build for agents](../principles/build-for-agents.md)
 - [Demos are not products](../principles/demos-are-not-products.md)
 - [Deep work and side projects](deep-work-and-side-projects.md)
+- [The capability gap](../principles/capability-gap.md)

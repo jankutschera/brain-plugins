@@ -1,9 +1,9 @@
 ---
 type: principle
 sources: [blog, x, youtube, youtube-appearances]
-quotes: 40
+quotes: 42
 first_seen: 2016-05
-last_seen: 2026-04
+last_seen: 2026-10
 ---
 # Verifiability drives progress
 
@@ -31,10 +31,12 @@ What can be verified gets automated. Reinforcement learning against a verifiable
   > "The RM we train for LLMs is just a vibe check in the exact same way." — [x/2024-08.md](https://x.com/karpathy/status/1821277264996352246) · 2024-08
   > "reinforcement learning is extremely good at discovering a way to game the model to game the simulation" — [youtube/2025-10-09_7xTGNNLPyMI_deep-dive-into-llms-like-chatgpt.md](https://www.youtube.com/watch?v=7xTGNNLPyMI&t=10891s) · 2025-02
   > "in these verifiable domains you can run RL indefinitely" — [youtube/2025-10-09_7xTGNNLPyMI_deep-dive-into-llms-like-chatgpt.md](https://www.youtube.com/watch?v=7xTGNNLPyMI&t=11132s) · 2025-02
-- Verifiability also explains why models are jagged: they are strong where labs could reward them.
+- Verifiability also explains why models are jagged: they are strong where labs could reward them. In 2026 he adds economic value, since labs pick their training environments by revenue potential.
   > "So, I think the reason I wrote about verifiability is I'm trying to understand why these things are so jagged." — [youtube-appearances/unknown_96jN2OCOfLs_andrej-karpathy-from-vibe-coding-to.md](https://www.youtube.com/watch?v=96jN2OCOfLs&t=644s) · 2026-04
   > "if you're in the circuits that were part of the RL, you fly and if you're in the circuits that are out of the data distribution, you're going to struggle" — [youtube-appearances/unknown_96jN2OCOfLs_andrej-karpathy-from-vibe-coding-to.md](https://www.youtube.com/watch?v=96jN2OCOfLs&t=794s) · 2026-04
   > "You're either in the data distribution (on the rails of the RL circuits) and flying or you're off-roading in the jungle with a machete, in relative terms." — [x/2026-04.md](https://x.com/karpathy/status/2049903821095354523) · 2026-04
+  > "Capability peaks in domains that are digital, verifiable and economically valuable." — [x/ingest/2026-10-11_2109361546505966046.md](https://x.com/karpathy/status/2109361546505966046) · 2026-10
+  > "This is because LLM capability emerges from reinforcement learning on verifiable rewards on a curated environment mixture driven by revenue potential." — [x/ingest/2026-10-11_2109361546505966046.md](https://x.com/karpathy/status/2109361546505966046) · 2026-10
 - Outcome-based RL is still crude: one reward spread over a whole attempt.
   > "Reinforcement learning is terrible. It just so happens that everything that we had before it is much worse because previously we were just imitating people" — [youtube-appearances/unknown_lXUZvyajciY_andrej-karpathy-we-re-summoning-ghosts.md](https://www.youtube.com/watch?v=lXUZvyajciY&t=2502s) · 2025-10
   > "The way I like to put it is you're sucking supervision through a straw." — [youtube-appearances/unknown_lXUZvyajciY_andrej-karpathy-we-re-summoning-ghosts.md](https://www.youtube.com/watch?v=lXUZvyajciY&t=2599s) · 2025-10
@@ -82,3 +84,4 @@ What can be verified gets automated. Reinforcement learning against a verifiable
 - [Demos are not products](demos-are-not-products.md)
 - [Scale and compute](scale-and-compute.md)
 - [Autoresearch](../methods/autoresearch.md)
+- [The capability gap](capability-gap.md)

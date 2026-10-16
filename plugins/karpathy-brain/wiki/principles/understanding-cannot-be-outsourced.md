@@ -1,9 +1,9 @@
 ---
 type: principle
 sources: [youtube-appearances, blog, x, youtube, github]
-quotes: 25
+quotes: 27
 first_seen: 2025-02
-last_seen: 2026-09
+last_seen: 2026-10
 ---
 # Understanding cannot be outsourced
 
@@ -60,6 +60,9 @@ He hands more and more of the work to AI, but the understanding, the review and 
 - In 2026 he describes trusting agent output more, while still disliking what he sees when he looks.
   > "And then I can't remember the last time I corrected it. And then I was I just uh you know, trusted the system more and more." — [youtube-appearances/unknown_96jN2OCOfLs_andrej-karpathy-from-vibe-coding-to.md](https://www.youtube.com/watch?v=96jN2OCOfLs&t=91s) · 2026-04
   > "when you actually look at the code, sometimes I get a little bit of a heart attack because it's not like super amazing code necessarily all the time" — [youtube-appearances/unknown_96jN2OCOfLs_andrej-karpathy-from-vibe-coding-to.md](https://www.youtube.com/watch?v=96jN2OCOfLs&t=1359s) · 2026-04
+- In October 2026 he wrote that at the frontier, where swarms of agents work for weeks, human review and comprehension are starting to fall behind.
+  > "It looks like swarms of thousands of agents collaborating over weeks on software mega projects" — [x/ingest/2026-10-11_2109361546505966046.md](https://x.com/karpathy/status/2109361546505966046) · 2026-10
+  > "Meanwhile, human review and comprehension are starting to fall behind." — [x/ingest/2026-10-11_2109361546505966046.md](https://x.com/karpathy/status/2109361546505966046) · 2026-10
 
 ## Related
 
@@ -70,3 +73,4 @@ He hands more and more of the work to AI, but the understanding, the review and 
 - [LLMs are ghosts](llms-are-ghosts.md)
 - [Learning is effortful](learning-is-effortful.md)
 - [Education with AI](../methods/education-with-ai.md)
+- [The capability gap](capability-gap.md)
