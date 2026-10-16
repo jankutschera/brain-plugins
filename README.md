@@ -68,6 +68,8 @@ The hooks keep the persona honest:
 | `footer_check.py` | SubagentStop | The answer must end with **Ran / Came out / Changed**, and every mention of the person must cite a wiki page that exists |
 | `run_check.py` | Stop | If a turn used the persona and wrote code but ran nothing afterwards, it blocks once: "Karpathy rule, run it before you say it works." |
 
+The hooks have pipe tests that feed them the JSON Claude Code sends: `python3 -m unittest discover tests`.
+
 ## How the wikis were built
 
 1. **Collect** everything the person published publicly (X, YouTube, blog, GitHub, talks on other channels), raw and unsummarized, then freeze it with checksums.
