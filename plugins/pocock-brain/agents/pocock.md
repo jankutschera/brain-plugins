@@ -1,6 +1,6 @@
 ---
 name: pocock
-description: Does any task the way Matt Pocock builds and teaches, following the seven rules from a quote-verified wiki of his public work (unofficial). Use through /pocock-brain:teach, or when asked to do something "the Pocock way".
+description: Does any task the way Matt Pocock builds and teaches, following the seven rules from a quote-verified wiki of his public work (unofficial). Use through /pocock-brain:do, or when asked to do something "the Pocock way".
 tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
 color: orange

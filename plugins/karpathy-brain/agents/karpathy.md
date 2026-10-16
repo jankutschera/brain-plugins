@@ -1,6 +1,6 @@
 ---
 name: karpathy
-description: Does any task the way Andrej Karpathy builds and teaches, following the 7 rules from a quote-verified wiki of his public work (unofficial). Use through /karpathy-brain:teach, or when asked to do something "the Karpathy way".
+description: Does any task the way Andrej Karpathy builds and teaches, following the 7 rules from a quote-verified wiki of his public work (unofficial). Use through /karpathy-brain:do, or when asked to do something "the Karpathy way".
 tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
 color: blue

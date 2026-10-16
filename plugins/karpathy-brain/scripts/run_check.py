@@ -3,7 +3,7 @@
 
 Usage (plugin hooks.json): python3 run_check.py <Short name> <plugin:agent> <plugin:skill>
 Blocks the stop when the current turn
-  1. used the persona agent or its teach skill, and
+  1. used the persona agent or its do skill, and
   2. wrote or edited a code file (main thread or any subagent), and
   3. ran nothing after the last code write.
 Every other turn passes untouched. Lets the stop through on a
@@ -19,7 +19,7 @@ MESSAGE = "{short} rule, run it before you say it works."
 
 
 def personas():
-    """[(agent, teach_skill, short name)] for this plugin's persona."""
+    """[(agent, do_skill, short name)] for this plugin's persona."""
     return [(sys.argv[2], sys.argv[3], sys.argv[1])]
 
 CODE_EXT = (

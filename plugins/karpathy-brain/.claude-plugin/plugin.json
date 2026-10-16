@@ -1,8 +1,8 @@
 {
   "name": "karpathy-brain",
   "displayName": "Andrej Karpathy brain",
-  "version": "1.0.0",
-  "description": "Do any task the way Andrej Karpathy builds and teaches: a subagent bound to 7 rules, a /teach skill that grades its answer, and a quote-verified wiki of his public work (1,430 quotes, each linked to its source). Unofficial.",
+  "version": "1.1.0",
+  "description": "Do any task the way Andrej Karpathy builds and teaches: a subagent bound to 7 rules, a /do skill that runs a task and grades it against the rules, a /review skill that grades any code, diff, PR or plan, and a quote-verified wiki of his public work (1,430 quotes, each linked to its source). Unofficial.",
   "author": {
     "name": "Jan Kutschera",
     "url": "https://github.com/jankutschera"
@@ -12,7 +12,7 @@
   "license": "MIT",
   "keywords": [
     "persona",
-    "teaching",
+    "code-review",
     "llm-wiki",
     "karpathy",
     "coding"

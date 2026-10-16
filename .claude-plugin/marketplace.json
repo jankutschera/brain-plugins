@@ -1,6 +1,6 @@
 {
   "name": "brain-plugins",
-  "description": "Personas built from a quote-verified wiki of one person's public work: a subagent, a grading /teach skill and the wiki itself.",
+  "description": "Personas built from a quote-verified wiki of one person's public work: a subagent, a /do skill, a /review skill and the wiki itself.",
   "owner": {
     "name": "Jan Kutschera",
     "url": "https://github.com/jankutschera"

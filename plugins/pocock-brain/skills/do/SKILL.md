@@ -1,11 +1,11 @@
 ---
-name: teach
+name: do
 description: Hand a task to the pocock subagent (Matt Pocock's seven build-and-teach rules from the bundled wiki), grade its answer against the rules, and show the answer with the grade.
 argument-hint: "[task]"
 disable-model-invocation: true
 ---
 
-# pocock-brain:teach
+# pocock-brain:do
 
 Task: $ARGUMENTS
 

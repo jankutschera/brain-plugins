@@ -125,7 +125,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: 0.9rem
 <header class="col">
   <div class="eyebrow">Claude Code plugins · unofficial</div>
   <h1>Brain Plugins</h1>
-  <p class="lede">Two Claude Code plugins that make an agent work the way Andrej Karpathy or Matt Pocock builds and teaches. Each one ships the person's 7 rules, a skill that grades the agent against them, and a wiki of their public work where every claim stands on a verbatim, linked quote.</p>
+  <p class="lede">Two Claude Code plugins that make an agent work the way Andrej Karpathy or Matt Pocock builds and teaches. Each one ships the person's 7 rules, a <code>do</code> skill that runs a task by them and grades the result, a <code>review</code> skill that grades any code, diff, PR or plan against them, and a wiki of their public work where every claim stands on a verbatim, linked quote.</p>
   <div class="who"><span class="k">karpathy-brain</span><span class="p">pocock-brain</span></div>
   <p class="note">Neither Andrej Karpathy nor Matt Pocock made, reviewed or endorsed these plugins. They are built only from what each of them published.</p>
 </header>
@@ -154,7 +154,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: 0.9rem
         <div class="stat"><b>5</b><span>source types</span></div>
       </div>
       <dl>
-        <dt>Skill</dt><dd><code>/karpathy-brain:teach</code></dd>
+        <dt>Skills</dt><dd><code>/karpathy-brain:do</code><br><code>/karpathy-brain:review</code></dd>
         <dt>Agent</dt><dd><code>karpathy-brain:karpathy</code></dd>
         <dt>Sources</dt><dd>9,426 X posts (2009–2026), 15 YouTube transcripts, 45 blog posts, 54 repos and 13 gists, 22 talks and interviews on other channels</dd>
       </dl>
@@ -167,7 +167,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: 0.9rem
         <div class="stat"><b>5</b><span>source types</span></div>
       </div>
       <dl>
-        <dt>Skill</dt><dd><code>/pocock-brain:teach</code></dd>
+        <dt>Skills</dt><dd><code>/pocock-brain:do</code><br><code>/pocock-brain:review</code></dd>
         <dt>Agent</dt><dd><code>pocock-brain:pocock</code></dd>
         <dt>Sources</dt><dd>35,859 X posts (2016–2026), 298 YouTube transcripts, 265 aihero.dev pages, 168 repos and 84 gists, 51 talks and streams on other channels</dd>
       </dl>
@@ -175,11 +175,29 @@ footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: 0.9rem
   </div>
 </section>
 
+<section class="col">
+  <div class="eyebrow">When to use which</div>
+  <h2>Pick the brain by the job</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Situation</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td>You want a feature built without the agent running off: scope first, a test first, then small steps.</td><td><code>/pocock-brain:do</code></td></tr>
+        <tr><td>Something is broken, or you want to understand how it works: predict, run, compare, rebuild the smallest version.</td><td><code>/karpathy-brain:do</code></td></tr>
+        <tr><td>You want a second opinion on code, a PR or a plan, whoever wrote it.</td><td><code>/…:review</code></td></tr>
+        <tr><td>You want to learn something, with an exercise before the answer.</td><td><code>do</code>, phrased as "teach me …"</td></tr>
+        <tr><td>You want to know what the person actually said about a topic, with a source.</td><td><code>wiki/hot.md</code>, then <code>wiki/index.md</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">They don't help with work outside software, such as copy, ads or email. The rules are about building and explaining code.</p>
+</section>
+
 <section>
   <div class="col" style="display:grid;gap:12px">
     <div class="eyebrow">wiki/rules.md</div>
     <h2>The 7 rules</h2>
-    <p>Each rule appears in at least two different kinds of source, such as a post and a talk, and in the person's own words. The agent follows them, and the teach skill grades against them.</p>
+    <p>Each rule appears in at least two different kinds of source, such as a post and a talk, and in the person's own words. The agent follows them, and both skills grade against them.</p>
   </div>
   <div class="two">
     <article class="card k">
@@ -210,8 +228,8 @@ footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: 0.9rem
 </section>
 
 <section class="col">
-  <div class="eyebrow">/karpathy-brain:teach &lt;task&gt;</div>
-  <h2>What happens on a teach run</h2>
+  <div class="eyebrow">/karpathy-brain:do &lt;task&gt;</div>
+  <h2>What happens on a do run</h2>
   <ol class="flow">
     <li><div>The skill hands your task to the persona agent unchanged, plus any file paths or decisions from your conversation.</div></li>
     <li><div>The agent must read <code>wiki/hot.md</code> before it can use any other tool. <span class="hook">wiki_budget</span></div></li>
@@ -222,6 +240,23 @@ footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: 0.9rem
     <li><div>Any FAIL gets one revision round with the exact fix, never more. Then you see the unedited answer and the grade table.</div></li>
     <li><div>If the turn wrote code and nothing ran afterwards, the session can't end until something runs. The message is "Karpathy rule, run it before you say it works." <span class="hook">run_check</span></div></li>
   </ol>
+</section>
+
+<section class="col">
+  <div class="eyebrow">/pocock-brain:review &lt;target&gt;</div>
+  <h2>A second opinion on any work</h2>
+  <p><code>review</code> grades work that already exists, whoever made it, against the same 7 rules. It is read-only: it changes nothing and installs nothing.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Target</th><th>What it reads</th></tr></thead>
+      <tbody>
+        <tr><td><code>src/http.ts</code>, a folder</td><td>The files, starting from the entry points</td></tr>
+        <tr><td><code>42</code> or a PR URL</td><td><code>gh pr view</code> and <code>gh pr diff</code></td></tr>
+        <tr><td><code>diff</code> or nothing</td><td><code>git diff HEAD</code>, or a plan in the conversation if that's empty</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>If the work has tests that run in under a minute, it runs them once as evidence. It then grades every rule with a <code>file:line</code> or a short quote as evidence. A process rule the work can't show, such as what came first, gets N/A instead of a guess. You get a verdict line, the grade table and the 3 fixes that matter most. Each fix carries a line from <code>wiki/rules.md</code> in the person's own words, checked word for word. You can hand the fixes straight to <code>do</code>.</p>
 </section>
 
 <section class="col">
@@ -275,8 +310,9 @@ footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: 0.9rem
   </div>
   <p>Then hand it a task:</p>
   <div class="cmds">
-    <div class="cmd"><code id="c4">/karpathy-brain:teach Write a numerically stable softmax in numpy and show why it is stable</code><button type="button" data-copy="c4">Copy</button></div>
-    <div class="cmd"><code id="c5">/pocock-brain:teach Add a typed retry helper with a test that proves it retries</code><button type="button" data-copy="c5">Copy</button></div>
+    <div class="cmd"><code id="c4">/pocock-brain:do Add a typed retry helper with a test that proves it retries</code><button type="button" data-copy="c4">Copy</button></div>
+    <div class="cmd"><code id="c5">/karpathy-brain:do Find out why the loss in train.py stops going down after epoch 3</code><button type="button" data-copy="c5">Copy</button></div>
+    <div class="cmd"><code id="c6">/pocock-brain:review diff</code><button type="button" data-copy="c6">Copy</button></div>
   </div>
   <p class="note">Source: <a href="https://github.com/jankutschera/brain-plugins">github.com/jankutschera/brain-plugins</a></p>
 </section>
